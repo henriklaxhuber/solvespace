@@ -23,6 +23,22 @@ TimerRef CreateTimer() {
     return std::unique_ptr<Timer>(new TimerImplHeadless);
 }
 
+//-----------------------------------------------------------------------------
+// Menus
+//-----------------------------------------------------------------------------
+
+MenuRef CreateMenu() {
+    return std::shared_ptr<Menu>();
+}
+
+MenuBarRef GetOrCreateMainMenu(bool *unique) {
+    *unique = true;
+    return std::shared_ptr<MenuBar>();
+}
+
+}
+
+void SetMainMenu(Platform::MenuBarRef menuBar) {
 }
 
 //-----------------------------------------------------------------------------
@@ -169,23 +185,6 @@ void HideGraphicsEditControl() {
 }
 bool GraphicsEditControlIsVisible() {
     return false;
-}
-void AddContextMenuItem(const char *label, ContextCommand cmd) {
-    ssassert(false, "Not implemented");
-}
-void CreateContextSubmenu() {
-    ssassert(false, "Not implemented");
-}
-ContextCommand ShowContextMenu() {
-    ssassert(false, "Not implemented");
-}
-void EnableMenuByCmd(Command cmd, bool enabled) {
-}
-void CheckMenuByCmd(Command cmd, bool checked) {
-}
-void RadioMenuByCmd(Command cmd, bool selected) {
-}
-void RefreshRecentMenus() {
 }
 
 //-----------------------------------------------------------------------------

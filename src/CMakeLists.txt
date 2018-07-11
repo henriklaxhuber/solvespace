@@ -105,6 +105,7 @@ endif()
 if(WIN32)
     set(platform_SOURCES
         platform/w32main.cpp
+        platform/gui.cpp
         platform/guiwin.cpp
         ${gl_SOURCES})
 
@@ -117,12 +118,14 @@ elseif(APPLE)
 
     set(platform_SOURCES
         platform/cocoamain.mm
+        platform/gui.cpp
         platform/guimac.mm
         render/rendergl.cpp
         ${gl_SOURCES})
 else()
     set(platform_SOURCES
         platform/gtkmain.cpp
+        platform/gui.cpp
         platform/guigtk.cpp
         ${gl_SOURCES})
 
