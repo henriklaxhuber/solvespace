@@ -8,6 +8,9 @@ osx_image: xcode8.2
 install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./.travis/install-debian.sh; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./.travis/install-macos.sh; fi
+before_script:
+  # Workaround for https://github.com/travis-ci/travis-ci/issues/4704.
+  - python -c 'import os,sys,fcntl; flags = fcntl.fcntl(sys.stdout, fcntl.F_GETFL); fcntl.fcntl(sys.stdout, fcntl.F_SETFL, flags&~os.O_NONBLOCK);'
 script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./.travis/build-debian.sh; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./.travis/build-macos.sh; fi
